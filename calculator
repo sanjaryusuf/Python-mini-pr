@@ -1,0 +1,52 @@
+# Simple Calculator Program
+# This program takes two numbers and an operator from the user and prints the result.
+
+def calculator():
+    print("\nWelcome to the Simple Calculator!")
+    print("Supported operations: +  -  *  /")
+
+    try:
+        # Ask the user to enter the first number
+        num1 = float(input("Enter the first number: "))
+
+        # Ask for the operation
+        operator = input("Enter an operator (+, -, *, /): ").strip()
+
+        # Ask for the second number
+        num2 = float(input("Enter the second number: "))
+
+        # Perform calculation based on operator
+        if operator == '+':
+            result = num1 + num2
+        elif operator == '-':
+            result = num1 - num2
+        elif operator == '*':
+            result = num1 * num2
+        elif operator == '/':
+            if num2 == 0:
+                print("Error: Cannot divide by zero.")
+                return
+            result = num1 / num2
+        else:
+            print("Invalid operator. Please use +, -, *, or / only.")
+            return
+
+        # Show the result
+        print(f"Result: {num1} {operator} {num2} = {result}")
+
+    except ValueError:
+        # This runs if the user enters something that’s not a number
+        print("Invalid input! Please enter numeric values only.")
+
+# Main loop to allow repeated calculations
+def main():
+    while True:
+        calculator()
+        again = input("Do you want to calculate again? (yes/no): ").lower()
+        if again != 'yes':
+            print("Thanks for using the calculator. Goodbye!")
+            break
+
+# Run the main function when the script is executed
+if __name__ == "__main__":
+    main()
